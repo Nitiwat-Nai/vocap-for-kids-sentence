@@ -137,7 +137,7 @@
         .control-group button:disabled { background-color: #ccc; cursor: not-allowed; box-shadow: none; }
 
         .audio-btn { background-color: var(--color-pastel-green); box-shadow: 0 4px 0 #85d685; }
-        .nav-btn { background-color: var(--color-pastel-purple); box-shadow: 0 4px 0 #cc99cc; }
+        .nav-btn { background-color: var(--color-pastel-purple); box-shadow: 0 4-px 0 #cc99cc; }
         .play-btn { background-color: var(--color-pastel-blue); box-shadow: 0 4px 0 #89b1c9; }
         .back-btn { background-color: #a9a9a9; box-shadow: 0 4px 0 #8b8b8b; }
     </style>
@@ -176,26 +176,26 @@
     <script>
         const vocabularyData = {
             "คำทักทายและแนะนำตัว": [
-                { thai: "สวัสดี! ฉันชื่ออเล็กซ์", english: "Hello! My name is Alex." },
-                { thai: "ฉันชื่อลิซ่า", english: "My name is Lisa." },
+                { thai: "สวัสดี", english: "Hello." },
+                { thai: "ฉันชื่อ...", english: "My name is..." },
                 { thai: "ยินดีที่ได้รู้จัก", english: "Nice to meet you." },
-                { thai: "วันนี้คุณเป็นอย่างไรบ้าง?", english: "How are you today?" },
+                { thai: "สบายดีไหม", english: "How are you?" },
                 { thai: "ฉันสบายดี ขอบคุณ", english: "I am fine, thank you." },
-                { thai: "คุณอายุเท่าไหร่?", english: "How old are you?" },
-                { thai: "ฉันอายุ 8 ขวบ", english: "I am 8 years old." },
-                { thai: "คุณมาจากไหน?", english: "Where are you from?" },
-                { thai: "ฉันมาจากลอนดอน", english: "I am from London." },
-                { thai: "ฉันมาจากกรุงเทพฯ", english: "I am from Bangkok." },
-                { thai: "ฉันชอบเล่นฟุตบอล", english: "I like to play football." },
-                { thai: "ฉันชอบวาดรูป", english: "I like to draw." },
-                { thai: "ฉันขอเล่นกับคุณได้ไหม?", english: "Can I play with you?" },
-                { thai: "ขอโทษนะครับ/คะ ห้องน้ำอยู่ที่ไหน?", english: "Excuse me, where is the toilet?" },
-                { thai: "ช่วยฉันหน่อยได้ไหม?", english: "Can you help me, please?" },
-                { thai: "ฉันไม่เข้าใจ", english: "I don't understand." },
-                { thai: "สีโปรดของคุณคืออะไร?", english: "What is your favorite color?" },
-                { thai: "สีโปรดของฉันคือสีน้ำเงิน", english: "My favorite color is blue." },
-                { thai: "แล้วเจอกันนะ!", english: "See you later!" },
-                { thai: "ลาก่อน!", english: "Goodbye!" }
+                { thai: "ลาก่อน", english: "Goodbye." },
+                { thai: "อรุณสวัสดิ์", english: "Good morning." },
+                { thai: "ฝันดีนะ", english: "Good night." },
+                { thai: "แล้วเจอกันใหม่", english: "See you again." },
+                { thai: "ขอโทษนะ", english: "Excuse me." },
+                { thai: "ขอบคุณมาก", english: "Thank you very much." },
+                { thai: "ขอความช่วยเหลือหน่อย", english: "Could you help me?" },
+                { thai: "ฉันไม่เป็นไร", english: "I am okay." },
+                { thai: "ยินดีให้ความช่วยเหลือ", english: "You're welcome." },
+                { thai: "วันนี้เป็นอย่างไรบ้าง", english: "How's your day?" },
+                { thai: "มีอะไรให้ช่วยไหม", english: "Can I help you?" },
+                { thai: "โชคดีนะ", english: "Good luck!" },
+                { thai: "ดูแลตัวเองด้วยนะ", english: "Take care." },
+                { thai: "สุขสันต์วันเกิด", english: "Happy birthday." },
+                { thai: "อร่อยมาก", english: "It's delicious." }
             ],
             "คำสั่งง่ายๆ": [
                 { thai: "นั่งลง", english: "Sit down." },
@@ -212,7 +212,12 @@
                 { thai: "เขียนชื่อของคุณ", english: "Write your name." },
                 { thai: "อ่านออกเสียงดังๆ", english: "Read aloud." },
                 { thai: "ระบายสีรูปนี้", english: "Color this picture." },
-                { thai: "จัดห้องให้เป็นระเบียบ", english: "Tidy up the room." }
+                { thai: "จัดห้องให้เป็นระเบียบ", english: "Tidy up the room." },
+                { thai: "ล้างมือของคุณ", english: "Wash your hands." },
+                { thai: "ทำความสะอาดโต๊ะ", english: "Clean the table." },
+                { thai: "ยกมือขึ้น", english: "Raise your hand." },
+                { thai: "วางดินสอลง", english: "Put down the pencil." },
+                { thai: "ตามฉันมา", english: "Follow me." }
             ],
             "ประโยคบอกเล่า": [
                 { thai: "ฉันชอบแอปเปิ้ล", english: "I like apples." },
@@ -229,7 +234,12 @@
                 { thai: "ดอกไม้มีกลิ่นหอม", english: "The flower smells fragrant." },
                 { thai: "ฉันเห็นผีเสื้อบิน", english: "I see a butterfly flying." },
                 { thai: "ฉันไปซื้อของที่ตลาด", english: "I went shopping at the market." },
-                { thai: "ฉันชอบกินไอศกรีม", english: "I like to eat ice cream." }
+                { thai: "ฉันชอบกินไอศกรีม", english: "I like to eat ice cream." },
+                { thai: "ฉันกำลังดูทีวี", english: "I am watching TV." },
+                { thai: "ฉันดื่มนมทุกเช้า", english: "I drink milk every morning." },
+                { thai: "ฉันใส่เสื้อสีแดง", english: "I am wearing a red shirt." },
+                { thai: "พ่อของฉันกำลังทำงาน", english: "My dad is working." },
+                { thai: "นกกำลังร้องเพลง", english: "The bird is singing." }
             ],
             "ประโยคคำถาม": [
                 { thai: "นี่คืออะไร", english: "What is this?" },
@@ -246,7 +256,12 @@
                 { thai: "กินข้าวหรือยัง", english: "Have you eaten yet?" },
                 { thai: "เธอจะเล่นกับฉันไหม", english: "Will you play with me?" },
                 { thai: "เธอรู้สึกอย่างไร", english: "How do you feel?" },
-                { thai: "ของเล่นชิ้นนี้ของใคร", english: "Whose toy is this?" }
+                { thai: "ของเล่นชิ้นนี้ของใคร", english: "Whose toy is this?" },
+                { thai: "คุณกำลังมองหาอะไรอยู่", english: "What are you looking for?" },
+                { thai: "มันราคาเท่าไหร่", english: "How much is it?" },
+                { thai: "คุณมาจากไหน", english: "Where are you from?" },
+                { thai: "ฉันควรทำอย่างไร", english: "What should I do?" },
+                { thai: "คุณชื่ออะไร", english: "What is your name?" }
             ],
             "เรื่องเกี่ยวกับตัวเรา": [
                 { thai: "ฉันอายุ 7 ขวบ", english: "I am 7 years old." },
@@ -263,7 +278,12 @@
                 { thai: "ฉันอาศัยอยู่ในบ้านหลังใหญ่", english: "I live in a big house." },
                 { thai: "ฉันชอบอ่านหนังสือการ์ตูน", english: "I like to read comics." },
                 { thai: "ฉันชอบสีฟ้า", english: "I like the color blue." },
-                { thai: "วันเกิดของฉันคือเดือนตุลาคม", english: "My birthday is in October." }
+                { thai: "วันเกิดของฉันคือเดือนตุลาคม", english: "My birthday is in October." },
+                { thai: "ฉันสูง", english: "I am tall." },
+                { thai: "ฉันเป็นนักเรียน", english: "I am a student." },
+                { thai: "ฉันไม่ชอบกินผัก", english: "I don't like to eat vegetables." },
+                { thai: "ฉันกำลังเรียนภาษาอังกฤษ", english: "I am learning English." },
+                { thai: "ฉันมีความสุขมาก", english: "I am very happy." }
             ],
             "สิ่งที่เห็นรอบตัว": [
                 { thai: "นี่คือโต๊ะ", english: "This is a table." },
@@ -280,7 +300,12 @@
                 { thai: "หิมะกำลังตก", english: "It is snowing." },
                 { thai: "ใบไม้กำลังเปลี่ยนสี", english: "The leaves are changing color." },
                 { thai: "มีเมฆสีขาวบนท้องฟ้า", english: "There are white clouds in the sky." },
-                { thai: "แสงแดดส่องผ่านหน้าต่าง", english: "The sun is shining through the window." }
+                { thai: "แสงแดดส่องผ่านหน้าต่าง", english: "The sun is shining through the window." },
+                { thai: "หนังสืออยู่บนชั้นวาง", english: "The book is on the shelf." },
+                { thai: "แม่น้ำไหลเร็ว", english: "The river flows fast." },
+                { thai: "มีคนกำลังวิ่งอยู่", english: "Someone is running." },
+                { thai: "ถนนเปียก", english: "The road is wet." },
+                { thai: "มีตึกสูงมากมาย", english: "There are many tall buildings." }
             ]
         };
 
