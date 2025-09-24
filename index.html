@@ -11,19 +11,18 @@
         @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap');
 
         :root {
-            --color-pastel-pink: #FFD1DC;
-            --color-pastel-blue: #A9DEF9;
-            --color-pastel-green: #CBE6A3;
-            --color-pastel-yellow: #FDE8AE;
-            --color-pastel-purple: #D5B8FF;
-            --color-pastel-orange: #FFB399;
+            --color-pastel-pink: #FFC0CB;
+            --color-pastel-blue: #ADD8E6;
+            --color-pastel-green: #98FB98;
+            --color-pastel-yellow: #F0E68C;
+            --color-pastel-purple: #E6A9E6;
             --text-color-dark: #333;
             --text-color-light: #fff;
         }
 
         body {
             font-family: 'Sarabun', sans-serif;
-            background: linear-gradient(135deg, var(--color-pastel-blue), var(--color-pastel-green));
+            background: linear-gradient(135deg, #BDE0FF, #FFC7D8);
             color: var(--text-color-dark);
             margin: 0;
             padding: 20px;
@@ -35,7 +34,7 @@
         }
 
         .container {
-            background-color: var(--color-pastel-pink);
+            background-color: var(--color-pastel-blue);
             padding: 2.5rem;
             border-radius: 40px;
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
@@ -43,14 +42,10 @@
             max-width: 650px;
             box-sizing: border-box;
             border: 6px solid var(--text-color-light);
-            aspect-ratio: 16 / 9; /* Set aspect ratio */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
         h1 {
-            color: var(--color-pastel-purple);
+            color: var(--text-color-dark);
             font-size: 2.8em;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
             margin: 0;
@@ -66,7 +61,7 @@
             margin-top: 1.5rem;
         }
         .category-button {
-            background-color: var(--color-pastel-blue);
+            background-color: var(--color-pastel-pink);
             color: var(--text-color-dark);
             border: none;
             padding: 1.5rem;
@@ -74,7 +69,7 @@
             font-size: 1.1em;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 5px 0 #81c6e4;
+            box-shadow: 0 5px 0 #e4a2b9;
             transition: all 0.2s ease-in-out;
             display: flex;
             flex-direction: column;
@@ -83,7 +78,7 @@
             text-align: center;
             gap: 10px;
         }
-        .category-button:hover { transform: translateY(-3px); box-shadow: 0 8px 0 #81c6e4; }
+        .category-button:hover { transform: translateY(-3px); box-shadow: 0 8px 0 #e4a2b9; }
         .category-button:active { transform: translateY(1px); box-shadow: none; }
         .category-button .category-icon { font-size: 2.5em; line-height: 1; }
         .category-text { font-size: 0.9em; }
@@ -93,14 +88,14 @@
         #vocab-card {
             background-color: var(--color-pastel-yellow);
             border-radius: 30px;
-            padding: 2rem;
+            padding: 2.5rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border: 4px dashed var(--color-pastel-orange);
+            border: 4px dashed var(--color-pastel-purple);
             margin-bottom: 1.5rem;
         }
         #thai-word {
@@ -139,9 +134,9 @@
         .control-group button:active { transform: translateY(1px); box-shadow: none; }
         .control-group button:disabled { background-color: #ccc; cursor: not-allowed; box-shadow: none; }
 
-        .audio-btn { background-color: var(--color-pastel-green); box-shadow: 0 4px 0 #9cb579; }
-        .nav-btn { background-color: var(--color-pastel-orange); box-shadow: 0 4px 0 #d98a69; }
-        .play-btn { background-color: var(--color-pastel-blue); box-shadow: 0 4px 0 #81c6e4; }
+        .audio-btn { background-color: var(--color-pastel-green); box-shadow: 0 4px 0 #85d685; }
+        .nav-btn { background-color: var(--color-pastel-purple); box-shadow: 0 4px 0 #cc99cc; }
+        .play-btn { background-color: var(--color-pastel-blue); box-shadow: 0 4px 0 #89b1c9; }
         .back-btn { background-color: #a9a9a9; box-shadow: 0 4px 0 #8b8b8b; }
     </style>
 </head>
@@ -149,7 +144,7 @@
 
     <div class="container">
         <div id="category-page">
-            <h1>ตัวอย่างประโยค และการนำไปใช้</h1>
+            <h1>เรียนรู้คำศัพท์และประโยค</h1>
             <div id="category-grid" class="category-grid"></div>
         </div>
 
@@ -178,226 +173,83 @@
 
     <script>
         const vocabularyData = {
-            "สัตว์": [
-                { thai: "สุนัขชอบเห่า", english: "The dog likes to bark." },
-                { thai: "แมวชอบกินปลา", english: "The cat likes to eat fish." },
-                { thai: "นกกำลังบินบนท้องฟ้า", english: "The bird is flying in the sky." },
-                { thai: "ปลากำลังว่ายน้ำ", english: "The fish is swimming." },
-                { thai: "ไก่กำลังขัน", english: "The chicken is crowing." },
-                { thai: "เป็ดเดินเรียงแถว", english: "The ducks are walking in a line." },
-                { thai: "หมูอยู่ในคอก", english: "The pig is in the pen." },
-                { thai: "วัวกำลังกินหญ้า", english: "The cow is eating grass." },
-                { thai: "ม้าวิ่งเร็วมาก", english: "The horse runs very fast." },
-                { thai: "แกะมีขนฟู", english: "The sheep has fluffy wool." },
-                { thai: "กระต่ายชอบกินแครอท", english: "The rabbit likes to eat carrots." },
-                { thai: "เสือมีลายสวยงาม", english: "The tiger has beautiful stripes." },
-                { thai: "ช้างมีงวงยาว", english: "The elephant has a long trunk." },
-                { thai: "ผีเสื้อมีปีกหลากสี", english: "The butterfly has colorful wings." },
-                { thai: "โลมากระโดดข้ามคลื่น", english: "The dolphin jumps over the waves." }
+            "คำทักทายและแนะนำตัว": [
+                { thai: "สวัสดี", english: "Hello." },
+                { thai: "ฉันชื่อ...", english: "My name is..." },
+                { thai: "ยินดีที่ได้รู้จัก", english: "Nice to meet you." },
+                { thai: "สบายดีไหม", english: "How are you?" },
+                { thai: "ฉันสบายดี ขอบคุณ", english: "I am fine, thank you." },
+                { thai: "ลาก่อน", english: "Goodbye." },
+                { thai: "อรุณสวัสดิ์", english: "Good morning." },
+                { thai: "ฝันดีนะ", english: "Good night." },
+                { thai: "แล้วเจอกันใหม่", english: "See you again." },
+                { thai: "ขอโทษนะ", english: "Excuse me." },
+                { thai: "ขอบคุณมาก", english: "Thank you very much." }
             ],
-            "ร่างกาย": [
-                { thai: "ฉันมีสองตา", english: "I have two eyes." },
-                { thai: "ฉันมีสองหู", english: "I have two ears." },
-                { thai: "ฉันหายใจด้วยจมูก", english: "I breathe with my nose." },
-                { thai: "ฉันกินข้าวด้วยปาก", english: "I eat rice with my mouth." },
-                { thai: "ฉันมีผมสีดำ", english: "I have black hair." },
-                { thai: "ฉันมีมือสองข้าง", english: "I have two hands." },
-                { thai: "ฉันเดินด้วยขา", english: "I walk with my legs." },
-                { thai: "ฉันยืนด้วยเท้า", english: "I stand with my feet." },
-                { thai: "ฉันแปรงฟัน", english: "I brush my teeth." },
-                { thai: "ฉันเจ็บหัวเข่า", english: "My knee hurts." },
-                { thai: "ฉันมีแก้มกลมๆ", english: "I have round cheeks." },
-                { thai: "นิ้วมือของฉันยาว", english: "My fingers are long." },
-                { thai: "ฉันยกของหนักด้วยแขน", english: "I lift heavy things with my arms." },
-                { thai: "ฉันมีผิวสีแทน", english: "I have tan skin." },
-                { thai: "ฉันมีหัวใจที่เต้นอยู่", english: "I have a beating heart." }
+            "คำสั่งง่ายๆ": [
+                { thai: "นั่งลง", english: "Sit down." },
+                { thai: "ยืนขึ้น", english: "Stand up." },
+                { thai: "มานี่", english: "Come here." },
+                { thai: "ไปที่นั่น", english: "Go there." },
+                { thai: "เงียบๆ", english: "Be quiet." },
+                { thai: "ฟังฉัน", english: "Listen to me." },
+                { thai: "มองมาที่นี่", english: "Look at me." },
+                { thai: "ช่วยฉันหน่อย", english: "Help me." },
+                { thai: "เปิดประตู", english: "Open the door." },
+                { thai: "ปิดหน้าต่าง", english: "Close the window." },
+                { thai: "ห้ามวิ่ง", english: "Don't run." }
             ],
-            "อุปกรณ์การเรียน": [
-                { thai: "ฉันใช้ปากกาเขียนหนังสือ", english: "I use a pen to write." },
-                { thai: "ฉันใช้ดินสอวาดรูป", english: "I use a pencil to draw." },
-                { thai: "กระเป๋านักเรียนของฉันหนักมาก", english: "My school bag is very heavy." },
-                { thai: "หนังสือเล่มนี้หนา", english: "This book is thick." },
-                { thai: "ไม้บรรทัดใช้สำหรับขีดเส้น", english: "A ruler is used for drawing lines." },
-                { thai: "ฉันนั่งบนเก้าอี้", english: "I sit on a chair." },
-                { thai: "มีกระดานดำในห้องเรียน", english: "There is a blackboard in the classroom." },
-                { thai: "คอมพิวเตอร์ช่วยให้ฉันเรียนรู้", english: "The computer helps me learn." },
-                { thai: "ฉันซื้อของเล่นใหม่", english: "I bought a new toy." },
-                { thai: "ฉันใช้กาวติดกระดาษ", english: "I use glue to stick paper." },
-                { thai: "ฉันใช้ยางลบแก้ไขงานผิด", english: "I use an eraser to correct mistakes." },
-                { thai: "ฉันมีสมุดบันทึกเล่มเล็ก", english: "I have a small notebook." },
-                { thai: "สีเทียนใช้สำหรับระบายสี", english: "Crayons are used for coloring." },
-                { thai: "ฉันใช้กรรไกรตัดกระดาษ", english: "I use scissors to cut paper." },
-                { thai: "นาฬิกาบนโต๊ะช่วยให้ฉันตรงเวลา", english: "The clock on the table helps me be on time." }
-            ],
-            "ครอบครัว": [
-                { thai: "พ่อของฉันใจดี", english: "My father is kind." },
-                { thai: "แม่ของฉันทำอาหารอร่อย", english: "My mother cooks delicious food." },
-                { thai: "ฉันมีน้องสาวหนึ่งคน", english: "I have one younger sister." },
-                { thai: "พี่ชายของฉันตัวสูง", english: "My elder brother is tall." },
-                { thai: "เราเป็นครอบครัวที่มีความสุข", english: "We are a happy family." },
-                { thai: "บ้านของเรามีห้องครัวใหญ่", english: "Our house has a big kitchen." },
-                { thai: "น้องสาวของฉันเล่นตุ๊กตา", english: "My sister is playing with a doll." },
-                { thai: "ยายกำลังรดน้ำต้นไม้", english: "Grandmother is watering the plants." },
-                { thai: "ลุงและป้ามาเยี่ยมบ้าน", english: "Uncle and aunt came to visit the house." },
-                { thai: "ฉันรักครอบครัวของฉัน", english: "I love my family." },
-                { thai: "ปู่ของฉันเล่านิทานสนุกๆ", english: "My grandfather tells fun stories." },
-                { thai: "ฉันมีญาติมากมาย", english: "I have many relatives." },
-                { thai: "ห้องนั่งเล่นของเราอบอุ่น", english: "Our living room is cozy." },
-                { thai: "ฉันนอนบนเตียงนุ่มๆ", english: "I sleep on a soft bed." },
-                { thai: "ฉันช่วยแม่ทำความสะอาดบ้าน", english: "I help my mom clean the house." }
-            ],
-            "อาหารและเครื่องดื่ม": [
-                { thai: "ฉันกินข้าวทุกวัน", english: "I eat rice every day." },
-                { thai: "ฉันดื่มนมก่อนนอน", english: "I drink milk before bed." },
-                { thai: "ไข่เป็นอาหารเช้าที่ดี", english: "Eggs are a good breakfast." },
-                { thai: "ผักและผลไม้มีประโยชน์", english: "Vegetables and fruits are healthy." },
-                { thai: "ฉันชอบกินพิซซ่า", english: "I like to eat pizza." },
-                { thai: "น้ำเปล่ามีประโยชน์ต่อร่างกาย", english: "Drinking water is good for the body." },
-                { thai: "ขนมปังรสชาติดี", english: "The bread tastes good." },
-                { thai: "กาแฟสำหรับผู้ใหญ่", english: "Coffee is for adults." },
-                { thai: "เค้กชิ้นนี้อร่อย", english: "This piece of cake is delicious." },
-                { thai: "ไก่ทอดกรอบมาก", english: "The fried chicken is very crispy." },
-                { thai: "ฉันกินก๋วยเตี๋ยวสำหรับมื้อเที่ยง", english: "I eat noodle soup for lunch." },
-                { thai: "ส้มมีรสชาติเปรี้ยวหวาน", english: "Oranges taste sweet and sour." },
-                { thai: "ฉันกินไอศกรีมในวันที่อากาศร้อน", english: "I eat ice cream on a hot day." },
-                { thai: "น้ำส้มคั้นสดอร่อยมาก", english: "Fresh orange juice is very delicious." },
-                { thai: "ฉันช่วยแม่เตรียมผักสำหรับทำอาหาร", english: "I help my mom prepare vegetables for cooking." }
-            ],
-            "เสื้อผ้าและเครื่องแต่งกาย": [
-                { thai: "ฉันใส่เสื้อสีแดง", english: "I am wearing a red shirt." },
-                { thai: "แม่ซื้อกางเกงใหม่ให้ฉัน", english: "Mom bought me new pants." },
-                { thai: "กระโปรงของน้องสาวสวยมาก", english: "My sister's skirt is very beautiful." },
-                { thai: "ฉันใส่รองเท้าเพื่อไปโรงเรียน", english: "I wear shoes to go to school." },
-                { thai: "ฉันใส่หมวกเมื่อไปข้างนอก", english: "I wear a hat when I go outside." },
-                { thai: "เสื้อกันหนาวช่วยให้อบอุ่น", english: "A sweater helps me stay warm." },
-                { thai: "ฉันมีกระเป๋าเป้สีน้ำเงิน", english: "I have a blue backpack." },
-                { thai: "ฉันใส่ชุดว่ายน้ำไปทะเล", english: "I wear a swimsuit to the sea." },
-                { thai: "เข็มขัดช่วยให้กางเกงไม่หลวม", english: "A belt helps my pants stay up." },
-                { thai: "แว่นตาช่วยให้ฉันมองเห็นชัดเจน", english: "Glasses help me see clearly." },
-                { thai: "ฉันใส่ถุงเท้าสีขาว", english: "I wear white socks." },
-                { thai: "ร่มช่วยป้องกันฝน", english: "An umbrella protects from rain." },
-                { thai: "ฉันใส่เสื้อแขนยาวเมื่ออากาศหนาว", english: "I wear a long-sleeve shirt when it's cold." },
-                { thai: "ฉันแต่งตัวสวยๆ", english: "I am dressing up nicely." },
-                { thai: "ฉันมีรองเท้าผ้าใบหลายคู่", english: "I have many pairs of sneakers." }
-            ],
-            "สถานที่และสิ่งของ": [
+            "ประโยคบอกเล่า": [
+                { thai: "ฉันชอบแอปเปิ้ล", english: "I like apples." },
+                { thai: "ฉันมีสุนัขหนึ่งตัว", english: "I have one dog." },
+                { thai: "ท้องฟ้ามีสีฟ้า", english: "The sky is blue." },
+                { thai: "รถวิ่งเร็ว", english: "The car is fast." },
+                { thai: "ฉันกำลังอ่านหนังสือ", english: "I am reading a book." },
                 { thai: "ฉันไปโรงเรียนทุกวัน", english: "I go to school every day." },
-                { thai: "บ้านของฉันมีสวนสวย", english: "My house has a beautiful garden." },
-                { thai: "ฉันชอบเล่นที่สนามเด็กเล่น", english: "I like to play at the playground." },
-                { thai: "ฉันไปโรงพยาบาลเมื่อไม่สบาย", english: "I go to the hospital when I am sick." },
-                { thai: "ภูเขาใหญ่มาก", english: "The mountain is very big." },
-                { thai: "เราไปเที่ยวทะเล", english: "We are going on a trip to the sea." },
-                { thai: "ดวงอาทิตย์ให้ความร้อน", english: "The sun gives heat." },
-                { thai: "ฉันเห็นดวงจันทร์ตอนกลางคืน", english: "I see the moon at night." },
+                { thai: "แม่ของฉันทำอาหารอร่อย", english: "My mom cooks delicious food." },
+                { thai: "ฉันมีของเล่นใหม่", english: "I have a new toy." },
+                { thai: "วันนี้อากาศดี", english: "The weather is nice today." },
+                { thai: "ฉันกำลังเล่นเกม", english: "I am playing a game." },
+                { thai: "ฉันรักคุณ", english: "I love you." }
+            ],
+            "ประโยคคำถาม": [
+                { thai: "นี่คืออะไร", english: "What is this?" },
+                { thai: "เธอเป็นใคร", english: "Who are you?" },
+                { thai: "ที่นี่ที่ไหน", english: "Where is this place?" },
+                { thai: "ไปตอนไหน", english: "When do we go?" },
+                { thai: "ทำไมถึงเป็นแบบนี้", english: "Why is it like this?" },
+                { thai: "เธอจะไปกับฉันไหม", english: "Will you go with me?" },
+                { thai: "เธอต้องการอะไร", english: "What do you want?" },
+                { thai: "เธอสบายดีไหม", english: "Are you okay?" },
+                { thai: "บ้านเธออยู่ที่ไหน", english: "Where is your house?" },
+                { thai: "เราจะไปเมื่อไหร่", english: "When will we go?" },
+                { thai: "เธอชอบอะไร", english: "What do you like?" }
+            ],
+            "เรื่องเกี่ยวกับตัวเรา": [
+                { thai: "ฉันอายุ 7 ขวบ", english: "I am 7 years old." },
+                { thai: "ฉันชอบกินพิซซ่า", english: "I like to eat pizza." },
+                { thai: "ฉันมีผมสีดำ", english: "I have black hair." },
+                { thai: "ฉันชอบวาดรูป", english: "I like to draw." },
+                { thai: "ฉันรักครอบครัว", english: "I love my family." },
+                { thai: "ฉันมีเพื่อนหลายคน", english: "I have many friends." },
+                { thai: "ฉันชอบเล่นฟุตบอล", english: "I like to play football." },
+                { thai: "ฉันไปโรงเรียนด้วยรถบัส", english: "I go to school by bus." },
+                { thai: "ฉันช่วยแม่ทำความสะอาดบ้าน", english: "I help my mom clean the house." },
+                { thai: "ฉันชอบฟังเพลง", english: "I like to listen to music." },
+                { thai: "ฉันมีน้องชายหนึ่งคน", english: "I have one younger brother." }
+            ],
+            "สิ่งที่เห็นรอบตัว": [
+                { thai: "นี่คือโต๊ะ", english: "This is a table." },
+                { thai: "นั่นคือเก้าอี้", english: "That is a chair." },
+                { thai: "นกกำลังบิน", english: "The bird is flying." },
+                { thai: "ดวงอาทิตย์กำลังขึ้น", english: "The sun is rising." },
+                { thai: "มีดอกไม้สวยๆ", english: "There are beautiful flowers." },
                 { thai: "ฝนกำลังตก", english: "It is raining." },
-                { thai: "ฉันเห็นเมฆบนท้องฟ้า", english: "I see clouds in the sky." },
-                { thai: "ต้นไม้มีใบสีเขียว", english: "The tree has green leaves." },
-                { thai: "เราเดินข้ามสะพาน", english: "We walked across the bridge." },
-                { thai: "ขยะต้องทิ้งในถังขยะ", english: "Garbage must be thrown in the trash can." },
-                { thai: "มีดอกไม้บานในสวน", english: "There are flowers blooming in the garden." },
-                { thai: "ลมพัดแรงมาก", english: "The wind is blowing very hard." }
-            ],
-            "สี": [
-                { thai: "แอปเปิ้ลมีสีแดง", english: "The apple is red." },
-                { thai: "กล้วยมีสีเหลือง", english: "The banana is yellow." },
-                { thai: "ท้องฟ้ามีสีน้ำเงิน", english: "The sky is blue." },
-                { thai: "หญ้ามีสีเขียว", english: "The grass is green." },
-                { thai: "หมีแพนด้ามีสีขาวและดำ", english: "The panda is white and black." },
-                { thai: "ฉันชอบสีชมพู", english: "I like the color pink." },
-                { thai: "ดินมีสีน้ำตาล", english: "The soil is brown." },
-                { thai: "นกมีสีรุ้ง", english: "The bird has rainbow colors." },
-                { thai: "สีส้มผสมสีแดงและสีเหลือง", english: "Orange is a mix of red and yellow." },
-                { thai: "เสื้อของฉันเป็นสีเทา", english: "My shirt is gray." },
-                { thai: "รถของพ่อเป็นสีดำ", english: "My father's car is black." },
-                { thai: "ดอกไม้มีสีม่วง", english: "The flower is purple." },
-                { thai: "พระอาทิตย์ขึ้นเป็นสีทอง", english: "The sunrise is gold." },
-                { thai: "น้ำทะเลเป็นสีฟ้าอ่อน", english: "The sea water is light blue." },
-                { thai: "ฉันระบายสีแดงในรูปภาพ", english: "I colored red in the picture." }
-            ],
-            "ตัวเลข": [
-                { thai: "ฉันมีหนึ่งพี่ชาย", english: "I have one elder brother." },
-                { thai: "ฉันมีสองมือ", english: "I have two hands." },
-                { thai: "ฉันมีสามลูกโป่ง", english: "I have three balloons." },
-                { thai: "ฉันมีสี่ขา", english: "I have four legs." },
-                { thai: "ฉันมีนิ้วมือห้าอัน", english: "I have five fingers." },
-                { thai: "มีหกคนในครอบครัวของฉัน", english: "There are six people in my family." },
-                { thai: "นกเจ็ดตัวอยู่บนต้นไม้", english: "Seven birds are in the tree." },
-                { thai: "มีแปดดาวบนท้องฟ้า", english: "There are eight stars in the sky." },
-                { thai: "มีสิบสองเดือนในหนึ่งปี", english: "There are twelve months in a year." },
-                { thai: "ฉันได้หนึ่งร้อยคะแนนเต็ม", english: "I got one hundred full score." },
-                { thai: "เรานับเลขได้ถึงสิบ", english: "We can count up to ten." },
-                { thai: "ฉันมีเงินสองสิบห้าบาท", english: "I have twenty-five baht." },
-                { thai: "ฉันเป็นที่หนึ่งในการแข่งขัน", english: "I am first in the competition." },
-                { thai: "ครูให้ขนมฉันสิบชิ้น", english: "The teacher gave me ten candies." },
-                { thai: "สิบห้าเป็นเลขคี่", english: "Fifteen is an odd number." }
-            ],
-            "รูปร่าง": [
-                { thai: "ลูกบอลเป็นทรงกลม", english: "The ball is a sphere." },
-                { thai: "กล่องของขวัญเป็นสี่เหลี่ยม", english: "The gift box is a square." },
-                { thai: "หลังคาบ้านเป็นสามเหลี่ยม", english: "The house roof is a triangle." },
-                { thai: "ประตูเป็นสี่เหลี่ยมผืนผ้า", english: "The door is a rectangle." },
-                { thai: "ไข่เป็นวงรี", english: "The egg is an oval." },
-                { thai: "ดาวมีห้าแฉก", english: "A star has five points." },
-                { thai: "หัวใจแสดงถึงความรัก", english: "A heart represents love." },
-                { thai: "กล่องเป็นรูปลูกบาศก์", english: "The box is cube-shaped." },
-                { thai: "กรวยไอศกรีมมีรูปทรงกรวย", english: "The ice cream cone has a cone shape." },
-                { thai: "แก้วน้ำมีรูปทรงกระบอก", english: "The glass has a cylinder shape." },
-                { thai: "มีรูปเพชรอยู่บนแหวน", english: "There is a diamond shape on the ring." },
-                { thai: "ตึกสูงเป็นรูปทรงสี่เหลี่ยม", english: "The tall building is rectangular-shaped." },
-                { thai: "พีระมิดมีรูปทรงปิรามิด", english: "The pyramid has a pyramid shape." },
-                { thai: "สระว่ายน้ำเป็นรูปวงกลม", english: "The swimming pool is circular." },
-                { thai: "เตียงนอนเป็นสี่เหลี่ยมผืนผ้า", english: "The bed is a rectangle." }
-            ],
-            "อารมณ์และความรู้สึก": [
-                { thai: "ฉันมีความสุขมาก", english: "I am very happy." },
-                { thai: "ฉันรู้สึกเศร้าที่หกล้ม", english: "I feel sad that I fell down." },
-                { thai: "ฉันโกรธเมื่อถูกแกล้ง", english: "I am angry when I get bullied." },
-                { thai: "ฉันกลัวความมืด", english: "I am scared of the dark." },
-                { thai: "ฉันประหลาดใจกับของขวัญ", english: "I am surprised by the gift." },
-                { thai: "ฉันเหนื่อยจากการวิ่ง", english: "I am tired from running." },
-                { thai: "ฉันหิวและอยากกินข้าว", english: "I am hungry and want to eat rice." },
-                { thai: "ฉันรู้สึกตื่นเต้นกับวันเกิด", english: "I feel excited about my birthday." },
-                { thai: "เพื่อนของฉันเป็นคนใจดี", english: "My friend is a kind person." },
-                { thai: "ฉันรู้สึกสบายดี", english: "I feel fine." },
-                { thai: "ฉันรู้สึกดีใจที่ได้เจอเพื่อน", english: "I feel glad to see my friend." },
-                { thai: "ฉันรู้สึกขี้เกียจวันนี้", english: "I feel lazy today." },
-                { thai: "ฉันดีใจที่เห็นแม่ยิ้ม", english: "I'm glad to see my mom smile." },
-                { thai: "ฉันชอบของเล่นชิ้นใหม่มาก", english: "I like the new toy very much." },
-                { thai: "ฉันรู้สึกเจ็บที่นิ้ว", english: "I feel pain in my finger." }
-            ],
-            "คำกริยาพื้นฐาน": [
-                { thai: "ฉันกำลังเดินไปโรงเรียน", english: "I am walking to school." },
-                { thai: "ฉันวิ่งเล่นกับเพื่อน", english: "I run and play with my friends." },
-                { thai: "ฉันนั่งบนเก้าอี้", english: "I sit on a chair." },
-                { thai: "ฉันนอนหลับบนเตียง", english: "I sleep on the bed." },
-                { thai: "ฉันกำลังกินอาหาร", english: "I am eating food." },
-                { thai: "ฉันอ่านหนังสือทุกวัน", english: "I read a book every day." },
-                { thai: "ฉันวาดรูปครอบครัว", english: "I draw a picture of my family." },
-                { thai: "ฉันชอบร้องเพลง", english: "I like to sing songs." },
-                { thai: "ฉันถามคำถามคุณครู", english: "I ask my teacher a question." },
-                { thai: "ฉันกำลังช่วยแม่ทำความสะอาดบ้าน", english: "I am helping my mom clean the house." },
-                { thai: "ฉันกำลังดื่มน้ำ", english: "I am drinking water." },
-                { thai: "ฉันกำลังเรียนหนังสือ", english: "I am studying." },
-                { thai: "ฉันชอบเล่นเกม", english: "I like to play games." },
-                { thai: "ฉันกำลังเต้นอย่างมีความสุข", english: "I am dancing happily." },
-                { thai: "ฉันกำลังฟังเพลง", english: "I am listening to music." }
-            ],
-            "วัน เดือน ฤดูกาล": [
-                { thai: "วันนี้เป็นวันจันทร์", english: "Today is Monday." },
-                { thai: "วันเสาร์และวันอาทิตย์คือวันหยุด", english: "Saturday and Sunday are weekends." },
-                { thai: "เดือนมกราคมเป็นเดือนแรกของปี", english: "January is the first month of the year." },
-                { thai: "เดือนธันวาคมมีวันคริสต์มาส", english: "December has Christmas." },
-                { thai: "ปีนี้มีสิบสองเดือน", english: "This year has twelve months." },
-                { thai: "ประเทศไทยมีสามฤดู", english: "Thailand has three seasons." },
-                { thai: "ฤดูร้อนมีอากาศร้อนมาก", english: "The hot season is very hot." },
-                { thai: "ฤดูฝนมีฝนตกทุกวัน", english: "The rainy season has rain every day." },
-                { thai: "ฤดูหนาวอากาศเย็นสบาย", english: "The cool season is cool and comfortable." },
-                { thai: "ฉันเกิดเดือนพฤษภาคม", english: "I was born in May." },
-                { thai: "วันศุกร์เป็นวันสุดท้ายของสัปดาห์ทำงาน", english: "Friday is the last day of the work week." },
-                { thai: "วันเกิดของฉันคือวันที่หนึ่ง", english: "My birthday is on the first day." },
-                { thai: "เราเฉลิมฉลองปีใหม่ในเดือนมกราคม", english: "We celebrate New Year in January." },
-                { thai: "ฤดูใบไม้ผลิเป็นฤดูที่ดอกไม้บาน", english: "Spring is the season when flowers bloom." },
-                { thai: "ฤดูใบไม้ร่วงเป็นฤดูที่ใบไม้เปลี่ยนสี", english: "Autumn is the season when leaves change color." }
+                { thai: "รถของพ่อสีแดง", english: "My dad's car is red." },
+                { thai: "มีแมวอยู่บนหลังคา", english: "There is a cat on the roof." },
+                { thai: "ฉันเห็นผีเสื้อ", english: "I see a butterfly." },
+                { thai: "เรากำลังเดินในสวน", english: "We are walking in the park." },
+                { thai: "มีต้นไม้ใหญ่ๆ", english: "There are big trees." }
             ]
         };
 
@@ -477,35 +329,21 @@
         // --- Game Logic ---
         function createCategoryButtons() {
             const categoryMap = {
-                "สัตว์": "🐶",
-                "ร่างกาย": "👦",
-                "อุปกรณ์การเรียน": "📚",
-                "ครอบครัว": "👨‍👩‍👧‍👦",
-                "อาหารและเครื่องดื่ม": "🍔",
-                "เสื้อผ้าและเครื่องแต่งกาย": "👕",
-                "สถานที่และสิ่งของ": "🏠",
-                "สี": "🎨",
-                "ตัวเลข": "🔢",
-                "รูปร่าง": "🔵",
-                "อารมณ์และความรู้สึก": "😄",
-                "คำกริยาพื้นฐาน": "🏃‍♀️",
-                "วัน เดือน ฤดูกาล": "📅"
+                "คำทักทายและแนะนำตัว": "👋",
+                "คำสั่งง่ายๆ": "🗣️",
+                "ประโยคบอกเล่า": "💬",
+                "ประโยคคำถาม": "❓",
+                "เรื่องเกี่ยวกับตัวเรา": "👦",
+                "สิ่งที่เห็นรอบตัว": "🏠"
             };
 
             const categoryColors = {
-                "สัตว์": "#ffb6c1",
-                "ร่างกาย": "#87ceeb",
-                "อุปกรณ์การเรียน": "#b39cd0", 
-                "ครอบครัว": "#ffa07a",
-                "อาหารและเครื่องดื่ม": "#98fb98",
-                "เสื้อผ้าและเครื่องแต่งกาย": "#ffc0cb",
-                "สถานที่และสิ่งของ": "#bdb76b",
-                "สี": "#d8bfd8",
-                "ตัวเลข": "#f4a460",
-                "รูปร่าง": "#add8e6",
-                "อารมณ์และความรู้สึก": "#add8e6",
-                "คำกริยาพื้นฐาน": "#e9967a",
-                "วัน เดือน ฤดูกาล": "#f5cba7"
+                "คำทักทายและแนะนำตัว": "#b9d8ff",
+                "คำสั่งง่ายๆ": "#ffb6c1",
+                "ประโยคบอกเล่า": "#a9def9",
+                "ประโยคคำถาม": "#cbe6a3",
+                "เรื่องเกี่ยวกับตัวเรา": "#fde8ae",
+                "สิ่งที่เห็นรอบตัว": "#ffb399"
             };
 
             for (const category in vocabularyData) {
@@ -607,7 +445,7 @@
         function goToCategoryPage() {
             stopAutoPlay();
             lessonPage.style.display = 'none';
-            categoryPage.style.display = 'flex';
+            categoryPage.style.display = 'block';
         }
 
         // Event Listeners
