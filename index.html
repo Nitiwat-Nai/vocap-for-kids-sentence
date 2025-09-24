@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vocab for Kids</title>
+    <title>MK Vocab for Kids</title>
     <link rel="manifest" href="/mk-vocab-p1-game/manifest.json">
     <link rel="apple-touch-icon" href="/mk-vocab-p1-game/images/icon-192x192.png">
     
@@ -11,20 +11,20 @@
         @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap');
 
         :root {
-            --color-light-green: #90ee90;
-            --color-dark-green: #4CAF50;
-            --color-yellow: #fdd835;
-            --color-orange: #ff9800;
-            --color-purple: #9c27b0;
-            --text-color: #333;
-            --container-bg: #e0f7fa;
-            --card-bg: #81d4fa;
+            --color-pastel-pink: #FFD1DC;
+            --color-pastel-blue: #A9DEF9;
+            --color-pastel-green: #CBE6A3;
+            --color-pastel-yellow: #FDE8AE;
+            --color-pastel-purple: #D5B8FF;
+            --color-pastel-orange: #FFB399;
+            --text-color-dark: #333;
+            --text-color-light: #fff;
         }
 
         body {
             font-family: 'Sarabun', sans-serif;
-            background: #B3E5FC; /* Light Blue background */
-            color: var(--text-color);
+            background: linear-gradient(135deg, var(--color-pastel-blue), var(--color-pastel-green));
+            color: var(--text-color-dark);
             margin: 0;
             padding: 20px;
             display: flex;
@@ -35,41 +35,46 @@
         }
 
         .container {
-            background-color: var(--container-bg);
-            padding: 2rem;
-            border-radius: 40px; /* More rounded corners */
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            background-color: var(--color-pastel-pink);
+            padding: 2.5rem;
+            border-radius: 40px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
             width: 100%;
-            max-width: 600px;
+            max-width: 650px;
             box-sizing: border-box;
-            border: 5px solid #fff;
+            border: 6px solid var(--text-color-light);
+            aspect-ratio: 16 / 9; /* Set aspect ratio */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         h1 {
-            color: var(--color-purple);
+            color: var(--color-pastel-purple);
             font-size: 2.8em;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1.5rem;
+            margin: 0;
+            padding-bottom: 1.5rem;
         }
 
         /* Category Page */
-        #category-page { display: block; }
+        #category-page { display: block; flex-grow: 1; }
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 1.5rem;
             margin-top: 1.5rem;
         }
         .category-button {
-            background-color: var(--color-light-green);
-            color: white;
+            background-color: var(--color-pastel-blue);
+            color: var(--text-color-dark);
             border: none;
             padding: 1.5rem;
             border-radius: 30px; 
             font-size: 1.1em;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 5px 0 var(--color-dark-green);
+            box-shadow: 0 5px 0 #81c6e4;
             transition: all 0.2s ease-in-out;
             display: flex;
             flex-direction: column;
@@ -78,37 +83,37 @@
             text-align: center;
             gap: 10px;
         }
-        .category-button:hover { transform: translateY(-3px); box-shadow: 0 8px 0 var(--color-dark-green); }
+        .category-button:hover { transform: translateY(-3px); box-shadow: 0 8px 0 #81c6e4; }
         .category-button:active { transform: translateY(1px); box-shadow: none; }
         .category-button .category-icon { font-size: 2.5em; line-height: 1; }
         .category-text { font-size: 0.9em; }
 
         /* Lesson Page */
-        #lesson-page { display: none; }
+        #lesson-page { display: none; flex-grow: 1; display: flex; flex-direction: column; }
         #vocab-card {
-            background-color: var(--card-bg);
+            background-color: var(--color-pastel-yellow);
             border-radius: 30px;
-            padding: 2.5rem 1.5rem;
-            min-height: 250px;
+            padding: 2rem;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border: 4px dashed #fff;
-            position: relative;
+            border: 4px dashed var(--color-pastel-orange);
+            margin-bottom: 1.5rem;
         }
         #thai-word {
-            font-size: 2.5em; /* Adjusted for longer sentences */
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-size: 2.5em;
+            color: var(--text-color-dark);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
             margin-bottom: 0.5rem;
         }
         #english-word {
-            font-size: 2em; /* Adjusted for longer sentences */
-            color: #fff;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-            margin-bottom: 1.5rem;
+            font-size: 1.8em;
+            color: var(--text-color-dark);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
         }
 
         .control-group {
@@ -116,31 +121,28 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
         .control-group button {
-            color: white;
+            color: var(--text-color-light);
             border: none;
-            padding: 15px 30px;
+            padding: 12px 25px;
             border-radius: 50px;
-            font-size: 1.1em;
+            font-size: 1em;
             cursor: pointer;
             font-weight: bold;
             box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
             transition: all 0.2s ease-in-out;
+            flex-shrink: 0;
         }
         .control-group button:hover { transform: translateY(-2px); box-shadow: 0 6px 0 rgba(0, 0, 0, 0.2); }
         .control-group button:active { transform: translateY(1px); box-shadow: none; }
         .control-group button:disabled { background-color: #ccc; cursor: not-allowed; box-shadow: none; }
 
-        .audio-btn { background-color: #32cd32; box-shadow: 0 4px 0 #228b22; }
-        .audio-btn:hover { background-color: #2e8b57; }
-        .nav-btn { background-color: #ff8c00; box-shadow: 0 4px 0 #e47d00; }
-        .nav-btn:hover { background-color: #e47d00; }
-        .play-btn { background-color: #1e90ff; box-shadow: 0 4px 0 #1c86ee; }
-        .play-btn:hover { background-color: #1c86ee; }
+        .audio-btn { background-color: var(--color-pastel-green); box-shadow: 0 4px 0 #9cb579; }
+        .nav-btn { background-color: var(--color-pastel-orange); box-shadow: 0 4px 0 #d98a69; }
+        .play-btn { background-color: var(--color-pastel-blue); box-shadow: 0 4px 0 #81c6e4; }
         .back-btn { background-color: #a9a9a9; box-shadow: 0 4px 0 #8b8b8b; }
-        .back-btn:hover { background-color: #8b8b8b; }
     </style>
 </head>
 <body>
@@ -379,6 +381,23 @@
                 { thai: "ฉันชอบเล่นเกม", english: "I like to play games." },
                 { thai: "ฉันกำลังเต้นอย่างมีความสุข", english: "I am dancing happily." },
                 { thai: "ฉันกำลังฟังเพลง", english: "I am listening to music." }
+            ],
+            "วัน เดือน ฤดูกาล": [
+                { thai: "วันนี้เป็นวันจันทร์", english: "Today is Monday." },
+                { thai: "วันเสาร์และวันอาทิตย์คือวันหยุด", english: "Saturday and Sunday are weekends." },
+                { thai: "เดือนมกราคมเป็นเดือนแรกของปี", english: "January is the first month of the year." },
+                { thai: "เดือนธันวาคมมีวันคริสต์มาส", english: "December has Christmas." },
+                { thai: "ปีนี้มีสิบสองเดือน", english: "This year has twelve months." },
+                { thai: "ประเทศไทยมีสามฤดู", english: "Thailand has three seasons." },
+                { thai: "ฤดูร้อนมีอากาศร้อนมาก", english: "The hot season is very hot." },
+                { thai: "ฤดูฝนมีฝนตกทุกวัน", english: "The rainy season has rain every day." },
+                { thai: "ฤดูหนาวอากาศเย็นสบาย", english: "The cool season is cool and comfortable." },
+                { thai: "ฉันเกิดเดือนพฤษภาคม", english: "I was born in May." },
+                { thai: "วันศุกร์เป็นวันสุดท้ายของสัปดาห์ทำงาน", english: "Friday is the last day of the work week." },
+                { thai: "วันเกิดของฉันคือวันที่หนึ่ง", english: "My birthday is on the first day." },
+                { thai: "เราเฉลิมฉลองปีใหม่ในเดือนมกราคม", english: "We celebrate New Year in January." },
+                { thai: "ฤดูใบไม้ผลิเป็นฤดูที่ดอกไม้บาน", english: "Spring is the season when flowers bloom." },
+                { thai: "ฤดูใบไม้ร่วงเป็นฤดูที่ใบไม้เปลี่ยนสี", english: "Autumn is the season when leaves change color." }
             ]
         };
 
@@ -411,7 +430,13 @@
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.lang = lang;
-                utterance.volume = 1; // Increase volume to maximum
+                
+                // Adjust volume based on language
+                if (lang === 'th-TH') {
+                    utterance.volume = 1.1; // Increased volume for Thai
+                } else {
+                    utterance.volume = 1;
+                }
 
                 let targetVoice = null;
                 // Find a good voice for Thai
@@ -463,7 +488,8 @@
                 "ตัวเลข": "🔢",
                 "รูปร่าง": "🔵",
                 "อารมณ์และความรู้สึก": "😄",
-                "คำกริยาพื้นฐาน": "🏃‍♀️"
+                "คำกริยาพื้นฐาน": "🏃‍♀️",
+                "วัน เดือน ฤดูกาล": "📅"
             };
 
             const categoryColors = {
@@ -478,7 +504,8 @@
                 "ตัวเลข": "#f4a460",
                 "รูปร่าง": "#add8e6",
                 "อารมณ์และความรู้สึก": "#add8e6",
-                "คำกริยาพื้นฐาน": "#e9967a"
+                "คำกริยาพื้นฐาน": "#e9967a",
+                "วัน เดือน ฤดูกาล": "#f5cba7"
             };
 
             for (const category in vocabularyData) {
@@ -500,7 +527,7 @@
             currentIndex = 0;
             displayVocab();
             categoryPage.style.display = 'none';
-            lessonPage.style.display = 'block';
+            lessonPage.style.display = 'flex';
             updateButtonState();
         }
 
@@ -580,7 +607,7 @@
         function goToCategoryPage() {
             stopAutoPlay();
             lessonPage.style.display = 'none';
-            categoryPage.style.display = 'block';
+            categoryPage.style.display = 'flex';
         }
 
         // Event Listeners
@@ -595,4 +622,3 @@
     </script>
 </body>
 </html>
-
