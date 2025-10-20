@@ -20,6 +20,12 @@
             --text-color-light: #fff;
             --color-bg-light: #BDE0FF;
             --color-bg-dark: #FFC7D8;
+
+            /* สีใหม่เพื่อความสดใสและอ่านง่าย */
+            --color-btn-nav: #FFA500; /* ส้มสดใส */
+            --color-btn-audio: #32CD32; /* เขียวมะนาวสดใส */
+            --color-btn-play: #1E90FF; /* น้ำเงินเข้ม */
+            --color-card-bg: #FFFFE0; /* เหลืองอ่อน (High Contrast) */
         }
 
         body {
@@ -44,7 +50,6 @@
             max-width: 650px;
             box-sizing: border-box;
             border: 6px solid var(--text-color-light);
-            /* เพิ่ม Flexbox เพื่อจัดการการกระจายเนื้อหาแนวตั้ง */
             display: flex; 
             flex-direction: column;
             min-height: 95vh; 
@@ -58,7 +63,7 @@
             padding-bottom: 1.5rem;
         }
 
-        /* Category Page */
+        /* Category Page (คงเดิม) */
         #category-page { display: block; flex-grow: 1; display: flex; flex-direction: column; } 
         .category-grid {
             display: grid;
@@ -94,7 +99,8 @@
         /* Lesson Page */
         #lesson-page { display: none; flex-grow: 1; flex-direction: column; }
         #vocab-card {
-            background-color: var(--color-pastel-yellow);
+            /* ใช้สีเหลืองอ่อนที่คอนทราสต์ดีขึ้น */
+            background-color: var(--color-card-bg); 
             border-radius: 30px;
             padding: 2.5rem;
             flex-grow: 1; 
@@ -107,13 +113,16 @@
             margin-bottom: 1.5rem;
         }
         #thai-word {
-            font-size: 2.5em;
+            /* เพิ่มขนาดตัวอักษรสำหรับหน้าจอใหญ่ */
+            font-size: 2.8em; 
             color: var(--text-color-dark);
+            font-weight: 700;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem; /* เพิ่มระยะห่าง */
         }
         #english-word {
-            font-size: 1.8em;
+            /* เพิ่มขนาดตัวอักษรสำหรับหน้าจอใหญ่ */
+            font-size: 2.2em;
             color: var(--text-color-dark);
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
             margin-bottom: 1rem;
@@ -129,23 +138,25 @@
         .control-group button {
             color: var(--text-color-light);
             border: none;
-            padding: 12px 25px;
+            padding: 15px 30px; /* เพิ่มขนาด Padding ทั่วไป */
             border-radius: 50px;
-            font-size: 1em;
+            font-size: 1.1em; /* เพิ่มขนาดตัวอักษรทั่วไป */
             cursor: pointer;
             font-weight: bold;
-            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 0 rgba(0, 0, 0, 0.3); /* เพิ่มเงาให้ปุ่มดูนูนขึ้น */
             transition: all 0.2s ease-in-out;
             flex-shrink: 0;
+            flex-grow: 1; /* ให้ปุ่มในแถวยืดเต็มพื้นที่ */
         }
-        .control-group button:hover { transform: translateY(-2px); box-shadow: 0 6px 0 rgba(0, 0, 0, 0.2); }
-        .control-group button:active { transform: translateY(1px); box-shadow: none; }
+        .control-group button:hover { transform: translateY(-3px); box-shadow: 0 8px 0 rgba(0, 0, 0, 0.3); }
+        .control-group button:active { transform: translateY(2px); box-shadow: none; }
         .control-group button:disabled { background-color: #ccc; cursor: not-allowed; box-shadow: none; }
 
-        .audio-btn { background-color: var(--color-pastel-green); box-shadow: 0 4px 0 #85d685; }
-        .nav-btn { background-color: var(--color-pastel-purple); box-shadow: 0 4px 0 #cc99cc; }
-        .play-btn { background-color: var(--color-pastel-blue); box-shadow: 0 4px 0 #89b1c9; }
-        .back-btn { background-color: #a9a9a9; box-shadow: 0 4px 0 #8b8b8b; }
+        /* ปรับสีปุ่มให้สดใสและคอนทราสต์ดี */
+        .audio-btn { background-color: var(--color-btn-audio); box-shadow: 0 5px 0 #28a928; }
+        .nav-btn { background-color: var(--color-btn-nav); box-shadow: 0 5px 0 #cc8400; }
+        .play-btn { background-color: var(--color-btn-play); box-shadow: 0 5px 0 #156ebf; }
+        .back-btn { background-color: #a9a9a9; box-shadow: 0 5px 0 #8b8b8b; }
         
         /* ---------------------------------------------------------------------- */
         /* MEDIA QUERY: ปรับสำหรับการแสดงผลเต็มจอมือถือแนวตั้ง */
@@ -171,36 +182,39 @@
                 padding-bottom: 1rem;
             }
 
-            /* Category Page */
+            /* Lesson Page */
+            #vocab-card {
+                /* ลดพื้นที่ Padding ภายในลง เพื่อให้เนื้อที่ส่วนปุ่มใหญ่ขึ้น */
+                padding: 1.2rem; 
+            }
+            #thai-word {
+                /* เพิ่มขนาดตัวอักษรสำหรับมือถือ */
+                font-size: 2.5em; 
+            }
+            #english-word {
+                /* เพิ่มขนาดตัวอักษรสำหรับมือถือ */
+                font-size: 2em; 
+            }
+            
+            .control-group {
+                gap: 0.7rem; /* ลดระยะห่างเล็กน้อยเพื่อประหยัดพื้นที่ */
+            }
+            .control-group button {
+                /* เพิ่มขนาดปุ่มสำหรับมือถืออย่างชัดเจน */
+                padding: 16px 20px; 
+                font-size: 1.2em; 
+                flex-grow: 1; /* ทำให้ปุ่มในแถวเดียวกันยืดเต็มความกว้าง */
+            }
+
+            /* Category Page (ปรับปุ่มให้ใหญ่ขึ้นเล็กน้อยบนมือถือ) */
             .category-grid {
                 grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
                 gap: 0.75rem; 
             }
             .category-button {
-                padding: 1rem 0.5rem;
-                font-size: 0.9em;
+                padding: 1.2rem 0.5rem;
+                font-size: 1em;
                 border-radius: 15px;
-            }
-            .category-button .category-icon { font-size: 2em; } 
-
-            /* Lesson Page */
-            #vocab-card {
-                padding: 1.5rem;
-            }
-            #thai-word {
-                font-size: 2em; 
-            }
-            #english-word {
-                font-size: 1.5em; 
-            }
-            
-            .control-group {
-                gap: 0.5rem;
-            }
-            .control-group button {
-                padding: 10px 15px;
-                font-size: 0.9em;
-                flex-grow: 1; 
             }
         }
     </style>
