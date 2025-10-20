@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MK Vocab for Kids</title>
+    <title>English Sentences & Vocab</title> 
     <link rel="manifest" href="/mk-vocab-p1-game/manifest.json">
     <link rel="apple-touch-icon" href="/mk-vocab-p1-game/images/icon-192x192.png">
     
@@ -27,7 +27,7 @@
             background: linear-gradient(135deg, var(--color-bg-light), var(--color-bg-dark));
             color: var(--text-color-dark);
             margin: 0;
-            padding: 20px;
+            padding: 0; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -37,13 +37,17 @@
 
         .container {
             background-color: var(--color-pastel-blue);
-            padding: 2.5rem;
+            padding: 2.5vh 1.5rem; 
             border-radius: 40px;
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
             width: 100%;
             max-width: 650px;
             box-sizing: border-box;
             border: 6px solid var(--text-color-light);
+            /* เพิ่ม Flexbox เพื่อจัดการการกระจายเนื้อหาแนวตั้ง */
+            display: flex; 
+            flex-direction: column;
+            min-height: 95vh; 
         }
 
         h1 {
@@ -55,12 +59,14 @@
         }
 
         /* Category Page */
-        #category-page { display: block; flex-grow: 1; }
+        #category-page { display: block; flex-grow: 1; display: flex; flex-direction: column; } 
         .category-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 1.5rem;
             margin-top: 1.5rem;
+            flex-grow: 1; 
+            align-content: start;
         }
         .category-button {
             background-color: var(--color-pastel-pink);
@@ -91,7 +97,7 @@
             background-color: var(--color-pastel-yellow);
             border-radius: 30px;
             padding: 2.5rem;
-            flex-grow: 1;
+            flex-grow: 1; 
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -118,7 +124,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 0.5rem; 
         }
         .control-group button {
             color: var(--text-color-light);
@@ -140,6 +146,63 @@
         .nav-btn { background-color: var(--color-pastel-purple); box-shadow: 0 4px 0 #cc99cc; }
         .play-btn { background-color: var(--color-pastel-blue); box-shadow: 0 4px 0 #89b1c9; }
         .back-btn { background-color: #a9a9a9; box-shadow: 0 4px 0 #8b8b8b; }
+        
+        /* ---------------------------------------------------------------------- */
+        /* MEDIA QUERY: ปรับสำหรับการแสดงผลเต็มจอมือถือแนวตั้ง */
+        /* ---------------------------------------------------------------------- */
+        @media screen and (max-width: 600px) and (orientation: portrait) {
+            
+            body {
+                align-items: stretch; 
+            }
+
+            .container {
+                padding: 1.5vh 0.5rem; 
+                width: 100%;
+                max-width: none; 
+                min-height: 100vh; 
+                border-radius: 0; 
+                border: none; 
+                box-shadow: none; 
+            }
+
+            h1 {
+                font-size: 2.2em; 
+                padding-bottom: 1rem;
+            }
+
+            /* Category Page */
+            .category-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+                gap: 0.75rem; 
+            }
+            .category-button {
+                padding: 1rem 0.5rem;
+                font-size: 0.9em;
+                border-radius: 15px;
+            }
+            .category-button .category-icon { font-size: 2em; } 
+
+            /* Lesson Page */
+            #vocab-card {
+                padding: 1.5rem;
+            }
+            #thai-word {
+                font-size: 2em; 
+            }
+            #english-word {
+                font-size: 1.5em; 
+            }
+            
+            .control-group {
+                gap: 0.5rem;
+            }
+            .control-group button {
+                padding: 10px 15px;
+                font-size: 0.9em;
+                flex-grow: 1; 
+            }
+        }
     </style>
 </head>
 <body>
@@ -322,7 +385,6 @@
                 { thai: "นี่ไม่จริง", english: "This is not true." },
                 { thai: "ฉันไม่เคยเห็นมันมาก่อน", english: "I have never seen it before." },
                 { thai: "มันยังไม่พร้อม", english: "It is not ready yet." },
-                { thai: "ฉันไม่ต้องการความช่วยเหลือ", english: "I don't need help." },
                 { thai: "เธอไม่ชอบเล่นข้างนอก", english: "She doesn't like to play outside." },
                 { thai: "มันไม่สำคัญ", english: "It does not matter." },
                 { thai: "อย่าวิ่ง", english: "Don't run." },
