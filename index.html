@@ -11,6 +11,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap');
 
         :root {
+            /* สีพื้นฐานที่สดใส */
             --color-pastel-pink: #FFC0CB;
             --color-pastel-blue: #ADD8E6;
             --color-pastel-green: #98FB98;
@@ -18,19 +19,18 @@
             --color-pastel-purple: #E6A9E6;
             --text-color-dark: #333;
             --text-color-light: #fff;
-            --color-bg-light: #BDE0FF;
-            --color-bg-dark: #FFC7D8;
-
-            /* สีใหม่เพื่อความสดใสและอ่านง่าย */
+            
+            /* สีปุ่มที่ชัดเจน */
             --color-btn-nav: #FFA500; /* ส้มสดใส */
             --color-btn-audio: #32CD32; /* เขียวมะนาวสดใส */
             --color-btn-play: #1E90FF; /* น้ำเงินเข้ม */
-            --color-card-bg: #FFFFE0; /* เหลืองอ่อน (High Contrast) */
+            --color-btn-back: #a9a9a9;
         }
 
         body {
             font-family: 'Sarabun', sans-serif;
-            background: linear-gradient(135deg, var(--color-bg-light), var(--color-bg-dark));
+            /* สีพื้นหลังเริ่มต้น (จะถูกเปลี่ยนด้วย JS เมื่อเข้าหน้า Lesson) */
+            background: linear-gradient(135deg, #BDE0FF, #FFC7D8); 
             color: var(--text-color-dark);
             margin: 0;
             padding: 0; 
@@ -39,9 +39,11 @@
             align-items: center;
             min-height: 100vh;
             text-align: center;
+            transition: background 0.5s ease-in-out; /* เพิ่มการเปลี่ยนสีพื้นหลังแบบนุ่มนวล */
         }
 
         .container {
+            /* สีพื้นหลังของ Container จะถูกควบคุมด้วย JS เพื่อเปลี่ยนตาม Category */
             background-color: var(--color-pastel-blue);
             padding: 2.5vh 1.5rem; 
             border-radius: 40px;
@@ -53,6 +55,7 @@
             display: flex; 
             flex-direction: column;
             min-height: 95vh; 
+            transition: background-color 0.5s ease-in-out;
         }
 
         h1 {
@@ -63,7 +66,7 @@
             padding-bottom: 1.5rem;
         }
 
-        /* Category Page (คงเดิม) */
+        /* Category Page Styles (คงเดิม) */
         #category-page { display: block; flex-grow: 1; display: flex; flex-direction: column; } 
         .category-grid {
             display: grid;
@@ -92,17 +95,14 @@
             gap: 10px;
         }
         .category-button:hover { transform: translateY(-3px); box-shadow: 0 8px 0 #e4a2b9; }
-        .category-button:active { transform: translateY(1px); box-shadow: none; }
-        .category-button .category-icon { font-size: 2.5em; line-height: 1; }
-        .category-text { font-size: 0.9em; }
 
-        /* Lesson Page */
+        /* Lesson Page Styles */
         #lesson-page { display: none; flex-grow: 1; flex-direction: column; }
         #vocab-card {
-            /* ใช้สีเหลืองอ่อนที่คอนทราสต์ดีขึ้น */
-            background-color: var(--color-card-bg); 
+            /* สีพื้นหลังของการ์ดจะถูกเปลี่ยนด้วย JS ตาม Category */
+            background-color: #FFFFE0; 
             border-radius: 30px;
-            padding: 2.5rem;
+            padding: 1.2rem; /* ลดพื้นที่ Padding เพื่อเพิ่มพื้นที่ปุ่ม */
             flex-grow: 1; 
             display: flex;
             flex-direction: column;
@@ -111,23 +111,28 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             border: 4px dashed var(--color-pastel-purple);
             margin-bottom: 1.5rem;
+            transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
         }
+        
+        /* ปรับขนาดตัวอักษร 20% จากเดิม (2.8em -> 3.36em) */
         #thai-word {
-            /* เพิ่มขนาดตัวอักษรสำหรับหน้าจอใหญ่ */
-            font-size: 2.8em; 
-            color: var(--text-color-dark);
+            font-size: 3.36em; 
+            color: #D22B2B; /* สีแดงเข้มเพื่อความชัดเจน */
             font-weight: 700;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-            margin-bottom: 0.8rem; /* เพิ่มระยะห่าง */
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
+            margin-bottom: 0.8rem; 
         }
+
+        /* ปรับขนาดตัวอักษร 20% จากเดิม (2.2em -> 2.64em) */
         #english-word {
-            /* เพิ่มขนาดตัวอักษรสำหรับหน้าจอใหญ่ */
-            font-size: 2.2em;
-            color: var(--text-color-dark);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            font-size: 2.64em;
+            color: #0047AB; /* สีน้ำเงินเข้มเพื่อความชัดเจน */
+            font-weight: 700;
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
             margin-bottom: 1rem;
         }
 
+        /* Control Button Styles (คงขนาดและสีที่ใหญ่ขึ้น) */
         .control-group {
             display: flex;
             flex-wrap: wrap;
@@ -138,83 +143,53 @@
         .control-group button {
             color: var(--text-color-light);
             border: none;
-            padding: 15px 30px; /* เพิ่มขนาด Padding ทั่วไป */
+            padding: 15px 30px; 
             border-radius: 50px;
-            font-size: 1.1em; /* เพิ่มขนาดตัวอักษรทั่วไป */
+            font-size: 1.1em; 
             cursor: pointer;
             font-weight: bold;
-            box-shadow: 0 5px 0 rgba(0, 0, 0, 0.3); /* เพิ่มเงาให้ปุ่มดูนูนขึ้น */
+            box-shadow: 0 5px 0 rgba(0, 0, 0, 0.3); 
             transition: all 0.2s ease-in-out;
             flex-shrink: 0;
-            flex-grow: 1; /* ให้ปุ่มในแถวยืดเต็มพื้นที่ */
+            flex-grow: 1; 
         }
         .control-group button:hover { transform: translateY(-3px); box-shadow: 0 8px 0 rgba(0, 0, 0, 0.3); }
         .control-group button:active { transform: translateY(2px); box-shadow: none; }
         .control-group button:disabled { background-color: #ccc; cursor: not-allowed; box-shadow: none; }
 
-        /* ปรับสีปุ่มให้สดใสและคอนทราสต์ดี */
         .audio-btn { background-color: var(--color-btn-audio); box-shadow: 0 5px 0 #28a928; }
         .nav-btn { background-color: var(--color-btn-nav); box-shadow: 0 5px 0 #cc8400; }
         .play-btn { background-color: var(--color-btn-play); box-shadow: 0 5px 0 #156ebf; }
-        .back-btn { background-color: #a9a9a9; box-shadow: 0 5px 0 #8b8b8b; }
+        .back-btn { background-color: var(--color-btn-back); box-shadow: 0 5px 0 #8b8b8b; }
         
         /* ---------------------------------------------------------------------- */
         /* MEDIA QUERY: ปรับสำหรับการแสดงผลเต็มจอมือถือแนวตั้ง */
         /* ---------------------------------------------------------------------- */
         @media screen and (max-width: 600px) and (orientation: portrait) {
             
-            body {
-                align-items: stretch; 
-            }
-
             .container {
-                padding: 1.5vh 0.5rem; 
-                width: 100%;
-                max-width: none; 
                 min-height: 100vh; 
                 border-radius: 0; 
                 border: none; 
                 box-shadow: none; 
             }
 
-            h1 {
-                font-size: 2.2em; 
-                padding-bottom: 1rem;
-            }
-
-            /* Lesson Page */
+            /* Lesson Page Mobile */
             #vocab-card {
-                /* ลดพื้นที่ Padding ภายในลง เพื่อให้เนื้อที่ส่วนปุ่มใหญ่ขึ้น */
-                padding: 1.2rem; 
+                padding: 1rem; 
             }
+            /* ปรับขนาดตัวอักษรบนมือถือ 20% จากเดิม (2.5em -> 3.0em) */
             #thai-word {
-                /* เพิ่มขนาดตัวอักษรสำหรับมือถือ */
-                font-size: 2.5em; 
+                font-size: 3.0em; 
             }
+            /* ปรับขนาดตัวอักษรบนมือถือ 20% จากเดิม (2.0em -> 2.4em) */
             #english-word {
-                /* เพิ่มขนาดตัวอักษรสำหรับมือถือ */
-                font-size: 2em; 
+                font-size: 2.4em; 
             }
             
-            .control-group {
-                gap: 0.7rem; /* ลดระยะห่างเล็กน้อยเพื่อประหยัดพื้นที่ */
-            }
             .control-group button {
-                /* เพิ่มขนาดปุ่มสำหรับมือถืออย่างชัดเจน */
                 padding: 16px 20px; 
                 font-size: 1.2em; 
-                flex-grow: 1; /* ทำให้ปุ่มในแถวเดียวกันยืดเต็มความกว้าง */
-            }
-
-            /* Category Page (ปรับปุ่มให้ใหญ่ขึ้นเล็กน้อยบนมือถือ) */
-            .category-grid {
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
-                gap: 0.75rem; 
-            }
-            .category-button {
-                padding: 1.2rem 0.5rem;
-                font-size: 1em;
-                border-radius: 15px;
             }
         }
     </style>
@@ -251,6 +226,7 @@
     </div>
 
     <script>
+        // ข้อมูลคำศัพท์และหมวดหมู่
         const vocabularyData = {
             "คำทักทายและแนะนำตัว": [
                 { thai: "สวัสดี", english: "Hello." },
@@ -429,10 +405,58 @@
             ]
         };
 
+        // --- การกำหนดสีสันสดใสสำหรับแต่ละหมวดหมู่ ---
+        const categoryColors = {
+            "คำทักทายและแนะนำตัว": {
+                containerBg: "#7B68EE", // สีน้ำเงินม่วงเข้ม
+                cardBg: "#ADD8E6", // สีฟ้าอ่อน
+                buttonBg: "#b9d8ff"
+            },
+            "คำสั่งง่ายๆ": {
+                containerBg: "#FF69B4", // สีชมพูร้อน (Hot Pink)
+                cardBg: "#FFC0CB", // สีชมพูอ่อน
+                buttonBg: "#ffb6c1"
+            },
+            "ประโยคบอกเล่า": {
+                containerBg: "#3CB371", // สีเขียวมิ้นต์เข้ม
+                cardBg: "#98FB98", // สีเขียวอ่อน
+                buttonBg: "#a9def9"
+            },
+            "ประโยคคำถาม": {
+                containerBg: "#FFD700", // สีทอง
+                cardBg: "#F0E68C", // สีเหลืองอ่อน
+                buttonBg: "#cbe6a3"
+            },
+            "เรื่องเกี่ยวกับตัวเรา": {
+                containerBg: "#BA55D3", // สีม่วง
+                cardBg: "#E6A9E6", // สีม่วงอ่อน
+                buttonBg: "#fde8ae"
+            },
+            "สิ่งที่เห็นรอบตัว": {
+                containerBg: "#FF8C00", // สีส้มเข้ม
+                cardBg: "#FFB399", // สีส้มอ่อน
+                buttonBg: "#ffb399"
+            },
+            "ประโยคปฎิเสธง่ายๆ": {
+                containerBg: "#DC143C", // สีแดงเลือดหมู
+                cardBg: "#FF6961", // สีแดงอ่อน
+                buttonBg: "#ff6961"
+            },
+            "ประโยคอุทาน": {
+                containerBg: "#00CED1", // สีฟ้าครามเข้ม
+                cardBg: "#AFEEEE", // สีฟ้าครามอ่อน
+                buttonBg: "#ffebcd" 
+            }
+        };
+
+        // --- DOM Elements ---
+        const body = document.body;
+        const container = document.querySelector('.container');
         const categoryPage = document.getElementById('category-page');
         const lessonPage = document.getElementById('lesson-page');
         const categoryGrid = document.getElementById('category-grid');
         const lessonTitle = document.getElementById('lesson-title');
+        const vocabCard = document.getElementById('vocab-card');
         const thaiWord = document.getElementById('thai-word');
         const englishWord = document.getElementById('english-word');
         const playPauseBtn = document.getElementById('play-pause-btn');
@@ -446,7 +470,7 @@
         let isPlaying = false;
         let voices = [];
         
-        // --- Web Speech API ---
+        // --- Web Speech API & Game Logic (ไม่เปลี่ยนแปลงในส่วนนี้) ---
         if ('speechSynthesis' in window) {
             window.speechSynthesis.onvoiceschanged = () => {
                 voices = window.speechSynthesis.getVoices();
@@ -459,22 +483,19 @@
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.lang = lang;
                 
-                // Adjust volume based on language
                 if (lang === 'th-TH') {
-                    utterance.volume = 1.1; // Increased volume for Thai
+                    utterance.volume = 1.1; 
                 } else {
                     utterance.volume = 1;
                 }
 
                 let targetVoice = null;
-                // Find a good voice for Thai
                 if (lang === 'th-TH') {
                     targetVoice = voices.find(v => v.lang.startsWith('th-TH') && v.name.includes('Lekha'));
                     if (!targetVoice) { 
                         targetVoice = voices.find(v => v.lang.startsWith('th-TH'));
                     }
                 } 
-                // Find a good voice for English
                 else if (lang === 'en-US') {
                     targetVoice = voices.find(v => v.lang.startsWith('en-US') && v.name.includes('Samantha'));
                     if (!targetVoice) { 
@@ -493,7 +514,7 @@
             }
         }
 
-        // --- PWA Service Worker ---
+        // ... (PWA Service Worker - คงเดิม) ...
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/mk-vocab-p1-game/sw.js', { scope: '/mk-vocab-p1-game/' })
@@ -502,28 +523,12 @@
             });
         }
         
-        // --- Game Logic ---
         function createCategoryButtons() {
             const categoryMap = {
-                "คำทักทายและแนะนำตัว": "👋",
-                "คำสั่งง่ายๆ": "🗣️",
-                "ประโยคบอกเล่า": "💬",
-                "ประโยคคำถาม": "❓",
-                "เรื่องเกี่ยวกับตัวเรา": "👦",
-                "สิ่งที่เห็นรอบตัว": "🏠",
-                "ประโยคปฎิเสธง่ายๆ": "🚫",
-                "ประโยคอุทาน": "😮"
-            };
-
-            const categoryColors = {
-                "คำทักทายและแนะนำตัว": "#b9d8ff",
-                "คำสั่งง่ายๆ": "#ffb6c1",
-                "ประโยคบอกเล่า": "#a9def9",
-                "ประโยคคำถาม": "#cbe6a3",
-                "เรื่องเกี่ยวกับตัวเรา": "#fde8ae",
-                "สิ่งที่เห็นรอบตัว": "#ffb399",
-                "ประโยคปฎิเสธง่ายๆ": "#ff6961",
-                "ประโยคอุทาน": "#ffebcd" 
+                "คำทักทายและแนะนำตัว": "👋", "คำสั่งง่ายๆ": "🗣️",
+                "ประโยคบอกเล่า": "💬", "ประโยคคำถาม": "❓",
+                "เรื่องเกี่ยวกับตัวเรา": "👦", "สิ่งที่เห็นรอบตัว": "🏠",
+                "ประโยคปฎิเสธง่ายๆ": "🚫", "ประโยคอุทาน": "😮"
             };
 
             for (const category in vocabularyData) {
@@ -533,13 +538,21 @@
                     <span class="category-icon">${categoryMap[category] || '💡'}</span>
                     <span class="category-text">${category}</span>
                 `;
-                button.style.backgroundColor = categoryColors[category] || '#e1bee7';
+                // ใช้สีปุ่มจาก categoryColors
+                button.style.backgroundColor = categoryColors[category].buttonBg || '#e1bee7';
                 button.addEventListener('click', () => startLesson(category));
                 categoryGrid.appendChild(button);
             }
         }
 
         function startLesson(category) {
+            // --- การเปลี่ยนสีหน้าจอตามหมวดหมู่ ---
+            const colors = categoryColors[category];
+            body.style.background = colors.containerBg;
+            container.style.backgroundColor = colors.containerBg;
+            vocabCard.style.backgroundColor = colors.cardBg;
+            vocabCard.style.borderColor = colors.containerBg; // ให้เส้นขอบการ์ดเป็นสีเดียวกับพื้นหลังคอนเทนเนอร์
+
             currentCategoryVocabs = vocabularyData[category];
             lessonTitle.textContent = category;
             currentIndex = 0;
@@ -624,6 +637,9 @@
 
         function goToCategoryPage() {
             stopAutoPlay();
+            // รีเซ็ตสีพื้นหลังให้เป็นค่าเริ่มต้นเมื่อกลับไปหน้า Categories
+            body.style.background = 'linear-gradient(135deg, #BDE0FF, #FFC7D8)';
+            container.style.backgroundColor = '#ADD8E6'; // สีฟ้าอ่อนเริ่มต้นของ Container
             lessonPage.style.display = 'none';
             categoryPage.style.display = 'block';
         }
